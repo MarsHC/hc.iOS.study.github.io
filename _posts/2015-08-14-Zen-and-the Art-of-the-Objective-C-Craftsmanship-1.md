@@ -9,12 +9,14 @@ title: 禅与Objective-C编程艺术（Zen and the Art of the Objective-C Crafts
 https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E5%BC%8F
 
 1.不要使用尤达表达式
+-------------
 
 	if ([@42 isEqual:myValue]) { ... Never do this.
 
 	if ([myValue isEqual:@42]) { ...  Do like this.
 
 2.nil 和 BOOL 检查
+-------------
 
 不推荐:
 
@@ -29,6 +31,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	if (!someObject) { ...
 
 3.重要的方法不要嵌套在分支里面，使用多个return可以避免增加循环的复杂度，并提高代码的可读性。
+-------------
 
 不推荐:
 
@@ -49,6 +52,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	}
 
 4.当你有一个复杂的 if 子句的时候，你应该把它们提取出来赋给一个 BOOL 变量，这样可以让逻辑更清楚，而且让每个子句的意义体现出来。
+-------------
 
 	BOOL nameContainsSwift  = [sessionName containsString:@"Swift"];
 	BOOL isCurrentYear      = [sessionDateCompontents year] == 2014;
@@ -59,6 +63,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	}
 
 5.三元运算符
+-------------
 
 三元运算符 ? 应该只用在它能让代码更加清楚的地方。 一个条件语句的所有的变量应该是已经被求值了的。类似 if 语句，计算多个条件子句通常会让语句更加难以理解。或者可以把它们重构到实例变量里面。
 
@@ -81,6 +86,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	result = object ? object : [self createObject];
 
 6.错误处理
+-------------
 
 有些方法通通过参数返回error的引用，使用这样的方法时应当检查方法的返回值，而非error的引用。
 
@@ -92,6 +98,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
     }
 
 7.Case语句
+-------------
 
 ① case 语句里面是不必要的。但是当一个 case 包含了多行语句的时候，需要加上括号。
 
@@ -139,6 +146,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	}
 
 8.枚举类型
+-------------
 
 像这样定义enum：
 
@@ -150,6 +158,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	};
 
 9.命名
+-------------
 
 推荐使用长的、描述性的方法和变量名。
 
@@ -162,6 +171,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	UIButton *setBut;
 
 10.常量
+-------------
 
 常量应该以驼峰法命名，并以相关类名作为前缀。
 
@@ -190,6 +200,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	extern NSString *const ZOCCacheControllerDidClearCacheNotification;
 
 11.方法
+-------------
 
 方法名与方法类型 (-/+ 符号)之间应该以空格间隔。方法段之间也应该以空格间隔（以符合 Apple 风格）。参数前应该总是有一个描述性的关键词。
 
@@ -210,7 +221,8 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	- (instancetype)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
 	- (instancetype)initWith:(int)width and:(int)height;  // Never do this.
 
-11.字面值
+12.字面值
+-------------
 
 使用字面值来创建不可变的NSString, NSDictionary, NSArray和NSNumber 对象。注意不要将 nil 传进 NSArray 和 NSDictionary 里，因为这样会导致崩溃。
 
