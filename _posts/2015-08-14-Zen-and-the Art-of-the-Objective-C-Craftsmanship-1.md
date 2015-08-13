@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 禅与Objective-C编程艺术（Zen and the Art of the Objective-C Craftsmanship）学习总结
+title: 禅与Objective-C编程艺术（Zen and the Art of the Objective-C Craftsmanship）学习总结（一）
 ---
 {{ page.title }}
 =============
