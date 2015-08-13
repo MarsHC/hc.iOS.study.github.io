@@ -33,9 +33,9 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 不推荐:
 
 	- (void)someMethod {
-  	    if ([someOther boolValue]) {
+        if ([someOther boolValue]) {
             //Do something important
-  	    }
+        }
 	}
 
 推荐:
