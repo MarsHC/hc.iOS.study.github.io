@@ -81,6 +81,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	result = object ? object : [self createObject];
 
 6.错误处理
+
 有些方法通通过参数返回error的引用，使用这样的方法时应当检查方法的返回值，而非error的引用。
 
 推荐:
@@ -124,6 +125,7 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	}
 
 ③当在switch语句里面使用一个可枚举的变量的时候，default 是不必要的。
+
 	switch (menuType) {
     case ZOCEnumNone:
         // ...
@@ -207,3 +209,28 @@ https://github.com/oa414/objc-zen-book-cn#%E5%B0%A4%E8%BE%BE%E8%A1%A8%E8%BE%BE%E
 	- (id)taggedView:(NSInteger)tag;
 	- (instancetype)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
 	- (instancetype)initWith:(int)width and:(int)height;  // Never do this.
+
+11.字面值
+
+使用字面值来创建不可变的NSString, NSDictionary, NSArray和NSNumber 对象。注意不要将 nil 传进 NSArray 和 NSDictionary 里，因为这样会导致崩溃。
+
+推荐:
+
+	NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
+	NSDictionary *productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill"};
+	NSNumber *shouldUseLiterals = @YES;
+	NSNumber *buildingZIPCode = @10018;
+
+不推荐:
+	
+	NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
+	NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
+	NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
+	NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
+
+如果要用到这些类的可变副本，推荐使用NSMutableArray, NSMutableString这样的类。
+
+应该避免下面这样:
+
+	NSMutableArray *aMutableArray = [@[] mutableCopy];
+
