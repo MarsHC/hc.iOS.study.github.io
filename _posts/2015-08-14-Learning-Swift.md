@@ -68,5 +68,40 @@ title: Learning Swift(一)
 *   条件执行语句必须加括号，即使只有一行代码。
 *   检测表达式的结果是true或false，不能再用0代表false，非0代表true。
 
+8.switch
 
+与OC中switch的2点区别：
 
+*   必须要覆盖每一种可能出现的情况，可以用default覆盖其它所有情况。
+*   不需要break。
+
+9.0..<10表示[0, 10)，1...10表示[1, 10]。
+
+10.Swift可以给循环语句添加一个Label，然后在内部循环中指定希望break或continue到哪个循环。
+
+	outer: for var i = 0; i < 10; i++ {
+	    println("i = \(i)")
+	    for j in 0 ..< 10 {
+	        println("j = \(j)")
+	        
+	        if j == 9 {
+	            break outer
+	        }
+	    }
+	}
+
+result:
+
+	i = 0
+	j = 0
+	j = 1
+	j = 2
+	j = 3
+	j = 4
+	j = 5
+	j = 6
+	j = 7
+	j = 8
+	j = 9
+
+11.
