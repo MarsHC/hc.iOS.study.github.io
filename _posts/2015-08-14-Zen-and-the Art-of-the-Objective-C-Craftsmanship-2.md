@@ -93,3 +93,8 @@ Objective-C有指定初始化方法(designated initializer)和间接(secondary i
 	}
 
 	@end
+
+Designated Initializer
+
+https://github.com/oa414/objc-zen-book-cn#designated-initializer
+
